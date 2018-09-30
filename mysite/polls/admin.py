@@ -14,6 +14,11 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']})
     ]
     inlines = [ChoiceInline]
+    # list_display is used to decide what gets shown in the questions page showing all questions
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
+    list_filter = ['pub_date']
+    search_fields = ['question_text']
+
 
 
 admin.site.register(Question, QuestionAdmin)
